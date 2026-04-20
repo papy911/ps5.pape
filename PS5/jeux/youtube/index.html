@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -54,30 +54,30 @@
 </head>
 <body>
     <div class="yt-header">
-        <div class="yt-logo"><span class="icon">▶</span> YouTube</div>
+        <div class="yt-logo"><span class="icon">â–¶</span> YouTube</div>
         <div class="yt-search">
             <input type="text" placeholder="Rechercher" id="yt-search-input">
-            <button>🔍</button>
+            <button>ðŸ”</button>
         </div>
         <div class="yt-icons">
-            <span>🎥</span><span>🔔</span>
+            <span>ðŸŽ¥</span><span>ðŸ””</span>
             <div class="yt-avatar">J</div>
         </div>
     </div>
     <div class="main">
         <div class="sidebar">
-            <div class="sidebar-item active"><span class="ico">🏠</span> Accueil</div>
-            <div class="sidebar-item"><span class="ico">🔥</span> Tendances</div>
-            <div class="sidebar-item"><span class="ico">📺</span> Abonnements</div>
+            <div class="sidebar-item active"><span class="ico">ðŸ </span> Accueil</div>
+            <div class="sidebar-item"><span class="ico">ðŸ”¥</span> Tendances</div>
+            <div class="sidebar-item"><span class="ico">ðŸ“º</span> Abonnements</div>
             <div class="sidebar-divider"></div>
-            <div class="sidebar-item"><span class="ico">📚</span> Bibliothèque</div>
-            <div class="sidebar-item"><span class="ico">⏱</span> Historique</div>
-            <div class="sidebar-item"><span class="ico">👍</span> Vidéos likées</div>
+            <div class="sidebar-item"><span class="ico">ðŸ“š</span> BibliothÃ¨que</div>
+            <div class="sidebar-item"><span class="ico">â±</span> Historique</div>
+            <div class="sidebar-item"><span class="ico">ðŸ‘</span> VidÃ©os likÃ©es</div>
             <div class="sidebar-divider"></div>
-            <div class="sidebar-item"><span class="ico">🎮</span> Gaming</div>
-            <div class="sidebar-item"><span class="ico">🎵</span> Musique</div>
-            <div class="sidebar-item"><span class="ico">📰</span> Actualités</div>
-            <div class="sidebar-item"><span class="ico">⚽</span> Sports</div>
+            <div class="sidebar-item"><span class="ico">ðŸŽ®</span> Gaming</div>
+            <div class="sidebar-item"><span class="ico">ðŸŽµ</span> Musique</div>
+            <div class="sidebar-item"><span class="ico">ðŸ“°</span> ActualitÃ©s</div>
+            <div class="sidebar-item"><span class="ico">âš½</span> Sports</div>
         </div>
         <div class="content">
             <div class="chips">
@@ -89,35 +89,35 @@
                 <button class="chip">Cuisine</button>
                 <button class="chip">Science</button>
                 <button class="chip">Sports</button>
-                <button class="chip">Récemment mises en ligne</button>
+                <button class="chip">RÃ©cemment mises en ligne</button>
             </div>
             <div class="grid" id="video-grid"></div>
         </div>
     </div>
     <div class="player-modal" id="player-modal">
-        <span class="player-close" onclick="closePlayer()">✕</span>
+        <span class="player-close" onclick="closePlayer()">âœ•</span>
         <div class="player-video" onclick="togglePlay()">
-            <span class="big-play" id="big-play">▶</span>
+            <span class="big-play" id="big-play">â–¶</span>
         </div>
         <div class="player-info">
             <h2 id="p-title">Titre</h2>
-            <p id="p-meta">0 vues · il y a 0 jours</p>
+            <p id="p-meta">0 vues Â· il y a 0 jours</p>
         </div>
     </div>
     <script>
         const videos = [
-            {t:"Comment coder un jeu vidéo en JS",ch:"DevMaster",views:"1.2M",ago:"3 jours",dur:"18:42",img:"https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400"},
-            {t:"Top 10 des jeux 2026",ch:"GameZone",views:"890K",ago:"1 semaine",dur:"24:15",img:"https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400"},
-            {t:"Musique Lo-Fi pour étudier",ch:"ChillBeats",views:"5.6M",ago:"2 mois",dur:"3:24:00",img:"https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=400"},
-            {t:"Recette Ramen Japonais",ch:"CuisineWorld",views:"2.1M",ago:"5 jours",dur:"12:33",img:"https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400"},
-            {t:"Astrophysique pour les nuls",ch:"ScienceMax",views:"670K",ago:"2 semaines",dur:"31:07",img:"https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=400"},
-            {t:"Construire un PC Gaming en 2026",ch:"TechReview",views:"1.8M",ago:"4 jours",dur:"22:45",img:"https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400"},
-            {t:"Voyage au Japon - Tokyo Vlog",ch:"TravelNow",views:"3.4M",ago:"1 mois",dur:"28:19",img:"https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400"},
-            {t:"Entraînement HIIT 20 minutes",ch:"FitBody",views:"4.2M",ago:"6 jours",dur:"20:00",img:"https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400"},
-            {t:"Les secrets de l'intelligence artificielle",ch:"AIExplorer",views:"1.5M",ago:"3 semaines",dur:"45:12",img:"https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=400"},
-            {t:"Piano Tutorial - Moonlight Sonata",ch:"MusicLearn",views:"920K",ago:"2 mois",dur:"15:30",img:"https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=400"},
-            {t:"Comment devenir YouTuber en 2026",ch:"CreatorTips",views:"780K",ago:"1 semaine",dur:"19:45",img:"https://images.unsplash.com/photo-1616469829581-73993eb86b02?w=400"},
-            {t:"Nature 4K - Relaxation",ch:"NatureHD",views:"12M",ago:"6 mois",dur:"1:00:00",img:"https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400"},
+            {t:"Comment coder un jeu vidÃ©o en JS",ch:"DevMaster",views:"1.2M",ago:"3 jours",dur:"18:42",img:"../../assets/images/media_73.jpg"},
+            {t:"Top 10 des jeux 2026",ch:"GameZone",views:"890K",ago:"1 semaine",dur:"24:15",img:"../../assets/images/media_63.jpg"},
+            {t:"Musique Lo-Fi pour Ã©tudier",ch:"ChillBeats",views:"5.6M",ago:"2 mois",dur:"3:24:00",img:"../../assets/images/media_74.jpg"},
+            {t:"Recette Ramen Japonais",ch:"CuisineWorld",views:"2.1M",ago:"5 jours",dur:"12:33",img:"../../assets/images/media_75.jpg"},
+            {t:"Astrophysique pour les nuls",ch:"ScienceMax",views:"670K",ago:"2 semaines",dur:"31:07",img:"../../assets/images/media_11.jpg"},
+            {t:"Construire un PC Gaming en 2026",ch:"TechReview",views:"1.8M",ago:"4 jours",dur:"22:45",img:"../../assets/images/media_76.jpg"},
+            {t:"Voyage au Japon - Tokyo Vlog",ch:"TravelNow",views:"3.4M",ago:"1 mois",dur:"28:19",img:"../../assets/images/media_77.jpg"},
+            {t:"EntraÃ®nement HIIT 20 minutes",ch:"FitBody",views:"4.2M",ago:"6 jours",dur:"20:00",img:"../../assets/images/media_78.jpg"},
+            {t:"Les secrets de l'intelligence artificielle",ch:"AIExplorer",views:"1.5M",ago:"3 semaines",dur:"45:12",img:"../../assets/images/media_79.jpg"},
+            {t:"Piano Tutorial - Moonlight Sonata",ch:"MusicLearn",views:"920K",ago:"2 mois",dur:"15:30",img:"../../assets/images/media_80.jpg"},
+            {t:"Comment devenir YouTuber en 2026",ch:"CreatorTips",views:"780K",ago:"1 semaine",dur:"19:45",img:"../../assets/images/media_64.jpg"},
+            {t:"Nature 4K - Relaxation",ch:"NatureHD",views:"12M",ago:"6 mois",dur:"1:00:00",img:"../../assets/images/media_81.jpg"},
         ];
         const grid = document.getElementById('video-grid');
         const colors = ['#e53935','#8e24aa','#1e88e5','#43a047','#fb8c00','#00acc1'];
@@ -128,7 +128,7 @@
                 <div class="thumb" style="background-image:url('${v.img}')"><span class="duration">${v.dur}</span></div>
                 <div class="video-info">
                     <div class="channel-avatar" style="background:${colors[i%colors.length]}"></div>
-                    <div><h3>${v.t}</h3><div class="video-meta">${v.ch} · ${v.views} vues · il y a ${v.ago}</div></div>
+                    <div><h3>${v.t}</h3><div class="video-meta">${v.ch} Â· ${v.views} vues Â· il y a ${v.ago}</div></div>
                 </div>`;
             d.onclick = () => openPlayer(v.t, v.ch, v.views, v.ago);
             grid.appendChild(d);
@@ -136,13 +136,13 @@
         let isPlaying = false;
         function openPlayer(t,ch,views,ago) {
             document.getElementById('p-title').textContent = t;
-            document.getElementById('p-meta').textContent = `${ch} · ${views} vues · il y a ${ago}`;
+            document.getElementById('p-meta').textContent = `${ch} Â· ${views} vues Â· il y a ${ago}`;
             document.getElementById('player-modal').classList.add('active');
             isPlaying = false;
-            document.getElementById('big-play').textContent = '▶';
+            document.getElementById('big-play').textContent = 'â–¶';
         }
         function closePlayer() { document.getElementById('player-modal').classList.remove('active'); isPlaying=false; }
-        function togglePlay() { isPlaying=!isPlaying; document.getElementById('big-play').textContent = isPlaying?'⏸':'▶'; }
+        function togglePlay() { isPlaying=!isPlaying; document.getElementById('big-play').textContent = isPlaying?'â¸':'â–¶'; }
         document.addEventListener('keydown', e => { if(e.key==='Escape') closePlayer(); });
         document.querySelectorAll('.chip').forEach(c => c.onclick = function() {
             document.querySelectorAll('.chip').forEach(x => x.classList.remove('active'));
@@ -151,3 +151,4 @@
     </script>
 </body>
 </html>
+

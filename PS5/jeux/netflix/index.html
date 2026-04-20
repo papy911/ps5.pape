@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,7 @@
     <style>
         * { margin:0; padding:0; box-sizing:border-box; }
         body { background:#141414; color:#fff; font-family:'Segoe UI',Roboto,sans-serif; overflow-x:hidden; }
-        .hero { position:relative; height:70vh; background:linear-gradient(to right,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.3) 50%,transparent 100%),url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1920') center/cover; display:flex; align-items:flex-end; padding:60px; }
+        .hero { position:relative; height:70vh; background:linear-gradient(to right,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.3) 50%,transparent 100%),url('../../assets/images/media_31.jpg') center/cover; display:flex; align-items:flex-end; padding:60px; }
         .hero-content { max-width:500px; }
         .hero-content h1 { font-size:3rem; margin-bottom:12px; text-shadow:0 2px 20px rgba(0,0,0,0.8); }
         .hero-content p { font-size:0.95rem; opacity:0.85; line-height:1.6; margin-bottom:20px; }
@@ -50,15 +50,15 @@
             <div class="logo">NETFLIX</div>
             <div class="nav-links">
                 <a href="#">Accueil</a>
-                <a href="#">Séries</a>
+                <a href="#">SÃ©ries</a>
                 <a href="#">Films</a>
-                <a href="#">Nouveautés</a>
+                <a href="#">NouveautÃ©s</a>
                 <a href="#">Ma liste</a>
             </div>
         </div>
         <div style="display:flex;align-items:center;gap:15px;">
-            <span style="cursor:pointer">🔍</span>
-            <span style="cursor:pointer">🔔</span>
+            <span style="cursor:pointer">ðŸ”</span>
+            <span style="cursor:pointer">ðŸ””</span>
             <div style="width:30px;height:30px;border-radius:4px;background:linear-gradient(135deg,#e50914,#b20710);display:flex;align-items:center;justify-content:center;font-size:0.8rem;cursor:pointer;">J</div>
         </div>
     </div>
@@ -66,10 +66,10 @@
     <div class="hero">
         <div class="hero-content">
             <h1>Stranger Things</h1>
-            <p>Quand un jeune garçon disparaît, une petite ville découvre une affaire mystérieuse, des expériences secrètes et une fille extraordinaire.</p>
+            <p>Quand un jeune garÃ§on disparaÃ®t, une petite ville dÃ©couvre une affaire mystÃ©rieuse, des expÃ©riences secrÃ¨tes et une fille extraordinaire.</p>
             <div class="hero-btns">
-                <button class="btn-play" onclick="openPlayer('Stranger Things - S4E01')">▶ Lecture</button>
-                <button class="btn-info" onclick="openPlayer('Stranger Things - Bande Annonce')">ℹ Plus d'infos</button>
+                <button class="btn-play" onclick="openPlayer('Stranger Things - S4E01')">â–¶ Lecture</button>
+                <button class="btn-info" onclick="openPlayer('Stranger Things - Bande Annonce')">â„¹ Plus d'infos</button>
             </div>
         </div>
     </div>
@@ -79,7 +79,7 @@
         <div class="row" id="trending"></div>
     </div>
     <div class="section">
-        <h2>Séries populaires</h2>
+        <h2>SÃ©ries populaires</h2>
         <div class="row" id="series"></div>
     </div>
     <div class="section">
@@ -92,8 +92,8 @@
     </div>
 
     <div class="player-modal" id="player-modal">
-        <span class="player-close" onclick="closePlayer()">✕</span>
-        <div class="player-box"><div class="fake-video"><span class="play-icon" id="play-toggle">▶</span></div></div>
+        <span class="player-close" onclick="closePlayer()">âœ•</span>
+        <div class="player-box"><div class="fake-video"><span class="play-icon" id="play-toggle">â–¶</span></div></div>
         <div class="player-title" id="player-title">Titre</div>
         <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
     </div>
@@ -101,36 +101,36 @@
     <script>
         const movies = {
             trending: [
-                {t:"Squid Game 2",img:"https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?w=400"},
-                {t:"The Witcher",img:"https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400"},
-                {t:"Dark",img:"https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?w=400"},
-                {t:"Money Heist",img:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400"},
-                {t:"Arcane",img:"https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=400"},
-                {t:"Wednesday",img:"https://images.unsplash.com/photo-1509281373149-e957c6296406?w=400"},
-                {t:"Peaky Blinders",img:"https://images.unsplash.com/photo-1485846234645-a62644f84728?w=400"},
+                {t:"Squid Game 2",img:"../../assets/images/media_32.jpg"},
+                {t:"The Witcher",img:"../../assets/images/media_22.jpg"},
+                {t:"Dark",img:"../../assets/images/media_17.jpg"},
+                {t:"Money Heist",img:"../../assets/images/media_33.jpg"},
+                {t:"Arcane",img:"../../assets/images/media_9.jpg"},
+                {t:"Wednesday",img:"../../assets/images/media_14.jpg"},
+                {t:"Peaky Blinders",img:"../../assets/images/media_34.jpg"},
             ],
             series: [
-                {t:"Breaking Bad",img:"https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400"},
-                {t:"Narcos",img:"https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400"},
-                {t:"Ozark",img:"https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=400"},
-                {t:"The Crown",img:"https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=400"},
-                {t:"Lupin",img:"https://images.unsplash.com/photo-1514306191717-452ec28c7814?w=400"},
-                {t:"Black Mirror",img:"https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400"},
+                {t:"Breaking Bad",img:"../../assets/images/media_24.jpg"},
+                {t:"Narcos",img:"../../assets/images/media_35.jpg"},
+                {t:"Ozark",img:"../../assets/images/media_13.jpg"},
+                {t:"The Crown",img:"../../assets/images/media_36.jpg"},
+                {t:"Lupin",img:"../../assets/images/media_37.jpg"},
+                {t:"Black Mirror",img:"../../assets/images/media_25.jpg"},
             ],
             action: [
-                {t:"Extraction",img:"https://images.unsplash.com/photo-1535016120720-40c646be5580?w=400"},
-                {t:"Red Notice",img:"https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?w=400"},
-                {t:"The Gray Man",img:"https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400"},
-                {t:"6 Underground",img:"https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400"},
-                {t:"Triple Frontière",img:"https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=400"},
-                {t:"Old Guard",img:"https://images.unsplash.com/photo-1533488765986-dfa2a9939acd?w=400"},
+                {t:"Extraction",img:"../../assets/images/media_38.jpg"},
+                {t:"Red Notice",img:"../../assets/images/media_19.jpg"},
+                {t:"The Gray Man",img:"../../assets/images/media_15.jpg"},
+                {t:"6 Underground",img:"../../assets/images/media_23.jpg"},
+                {t:"Triple FrontiÃ¨re",img:"../../assets/images/media_20.jpg"},
+                {t:"Old Guard",img:"../../assets/images/media_26.jpg"},
             ],
             docs: [
-                {t:"Our Planet",img:"https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=400"},
-                {t:"The Social Dilemma",img:"https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400"},
-                {t:"Seaspiracy",img:"https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400"},
-                {t:"Abstract",img:"https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400"},
-                {t:"Chef's Table",img:"https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400"},
+                {t:"Our Planet",img:"../../assets/images/media_21.jpg"},
+                {t:"The Social Dilemma",img:"../../assets/images/media_39.jpg"},
+                {t:"Seaspiracy",img:"../../assets/images/media_40.jpg"},
+                {t:"Abstract",img:"../../assets/images/media_41.jpg"},
+                {t:"Chef's Table",img:"../../assets/images/media_42.jpg"},
             ]
         };
         Object.keys(movies).forEach(cat => {
@@ -151,7 +151,7 @@
             document.getElementById('player-title').textContent = title;
             document.getElementById('player-modal').classList.add('active');
             document.getElementById('progress-fill').style.width = '0%';
-            document.getElementById('play-toggle').textContent = '▶';
+            document.getElementById('play-toggle').textContent = 'â–¶';
             playing = false;
         }
         function closePlayer() {
@@ -161,12 +161,12 @@
         }
         document.getElementById('play-toggle').onclick = function() {
             playing = !playing;
-            this.textContent = playing ? '⏸' : '▶';
+            this.textContent = playing ? 'â¸' : 'â–¶';
             if (playing) {
                 progressInterval = setInterval(() => {
                     const fill = document.getElementById('progress-fill');
                     let w = parseFloat(fill.style.width) || 0;
-                    if (w >= 100) { clearInterval(progressInterval); playing = false; document.getElementById('play-toggle').textContent = '▶'; return; }
+                    if (w >= 100) { clearInterval(progressInterval); playing = false; document.getElementById('play-toggle').textContent = 'â–¶'; return; }
                     fill.style.width = (w + 0.5) + '%';
                 }, 200);
             } else { clearInterval(progressInterval); }
@@ -175,3 +175,4 @@
     </script>
 </body>
 </html>
+

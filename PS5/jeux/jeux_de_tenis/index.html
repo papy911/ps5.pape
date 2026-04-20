@@ -127,7 +127,10 @@
         fill(54, 54, 54, 25);
         ellipse(this.x, this.y + this.height, this.height, this.width * 1.5);
         imageMode(CENTER);
-        image(this.images[this.imageIdx], this.x, this.y, this.width * 2, this.height * 2);
+        let imgObj = this.images[this.imageIdx];
+        if (imgObj && imgObj.complete && imgObj.naturalWidth > 0) {
+          drawingContext.drawImage(imgObj, this.x - this.width, this.y - this.height, this.width * 2, this.height * 2);
+        }
         if (this.isPlayer && !this.playerHasMoved) {
           textSize(14);
           fill(54);
@@ -154,10 +157,13 @@
   let courtHeight, courtWidth, maxBallArc, oneFourthPoint, threeFourthsPoint;
   
   function preload() {
-    tennisManRedOne = loadImage('https://res.cloudinary.com/dkw0kkkgd/image/upload/v1550623424/tennisManRedOne_zaszr5.png');
-    tennisManRedTwo = loadImage('https://res.cloudinary.com/dkw0kkkgd/image/upload/v1550623420/tennisManRedTwo_mz3skr.png');
-    tennisManBlueOne = loadImage('https://res.cloudinary.com/dkw0kkkgd/image/upload/v1550623406/tennisManBlueOne_jo7ppq.png');
-    tennisManBlueTwo = loadImage('https://res.cloudinary.com/dkw0kkkgd/image/upload/v1550623416/tennisManBlueTwo_ac6ppw.png');
+    // Empty preload, we will load images in setup to avoid CORS issues with loadImage on file://
+  }
+
+  function createHiddenImg(path) {
+    let img = new Image();
+    img.src = path;
+    return img;
   }
   
   function setup() {
@@ -165,6 +171,10 @@
     leftPlayerScore = 0; rightPlayerScore = 0; // setup scoreboard
     setupCourtCoordinates();
     setupNetCoordinates();
+    tennisManRedOne = createHiddenImg('../../assets/images/media_27.png');
+    tennisManRedTwo = createHiddenImg('../../assets/images/media_28.png');
+    tennisManBlueOne = createHiddenImg('../../assets/images/media_29.png');
+    tennisManBlueTwo = createHiddenImg('../../assets/images/media_30.png');
     setupPaddles();
     ball = new Ball(width * 0.5, height * 0.5, width * 0.021); // setup ball
   }
@@ -472,3 +482,4 @@
     </script>
 </body>
 </html>
+

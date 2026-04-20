@@ -59,6 +59,20 @@
         .sp-vol { display:flex; align-items:center; gap:6px; }
         .sp-vol-bar { width:80px; height:4px; background:rgba(255,255,255,0.2); border-radius:4px; cursor:pointer; }
         .sp-vol-fill { width:65%; height:100%; background:rgba(255,255,255,0.7); border-radius:4px; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sp-sidebar { width: 100%; padding: 15px; flex-direction: row; flex-wrap: wrap; justify-content: center; height: auto; }
+            .sp-playlist { display: none; } /* Hide playlists on mobile sidebar */
+            .sp-divider { display: none; }
+            .sp-content { padding: 0 15px 120px; }
+            .sp-quick-grid { grid-template-columns: 1fr; }
+            .sp-player { flex-direction: column; height: 130px; padding: 10px; justify-content: center; gap: 10px; }
+            .sp-now { width: 100%; justify-content: center; }
+            .sp-extra { display: none; } /* Hide volume controls on mobile */
+            .sp-controls { width: 100%; }
+        }
     </style>
 </head>
 <body>
@@ -93,7 +107,7 @@
     </div>
     <div class="sp-player">
         <div class="sp-now">
-            <div class="sp-now-img" id="now-img" style="background-image:url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=100')"></div>
+            <div class="sp-now-img" id="now-img" style="background-image:url('../../assets/images/media_43.jpg')"></div>
             <div class="sp-now-info"><h5 id="now-title">Chill Vibes</h5><p id="now-artist">LoFi Beats</p></div>
             <span style="cursor:pointer;margin-left:8px;opacity:0.6" id="like-btn" onclick="this.textContent=this.textContent==='🤍'?'💚':'🤍'">🤍</span>
         </div>
@@ -118,7 +132,7 @@
         const h = new Date().getHours();
         document.getElementById('greeting').textContent = h<12?'Bonjour':h<18?'Bon après-midi':'Bonsoir';
         // Quick picks
-        const quicks = [{t:"Découverte de la semaine",img:"https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=100"},{t:"Release Radar",img:"https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=100"},{t:"Titres likés",img:"https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=100"},{t:"Gaming Mix",img:"https://images.unsplash.com/photo-1542751371-adc38448a05e?w=100"},{t:"Chill Hits",img:"https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=100"},{t:"Rap FR",img:"https://images.unsplash.com/photo-1571330735066-03aaa9429d89?w=100"}];
+        const quicks = [{t:"Découverte de la semaine",img:"../../assets/images/media_44.jpg"},{t:"Release Radar",img:"../../assets/images/media_45.jpg"},{t:"Titres likés",img:"../../assets/images/media_43.jpg"},{t:"Gaming Mix",img:"../../assets/images/media_46.jpg"},{t:"Chill Hits",img:"../../assets/images/media_47.jpg"},{t:"Rap FR",img:"../../assets/images/media_48.jpg"}];
         const qg = document.getElementById('quick-grid');
         quicks.forEach(q => {
             const d = document.createElement('div'); d.className = 'sp-quick';
@@ -128,9 +142,9 @@
         });
         // Cards
         const rows = {
-            r1:[{t:"Daily Mix 1",p:"Daft Punk, Justice...",img:"https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300"},{t:"Daily Mix 2",p:"Orelsan, PNL...",img:"https://images.unsplash.com/photo-1571330735066-03aaa9429d89?w=300"},{t:"Discover Weekly",p:"Fait pour toi",img:"https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=300"},{t:"Focus Flow",p:"Musique pour se concentrer",img:"https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=300"},{t:"Mood Booster",p:"Feel-good music",img:"https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=300"}],
-            r2:[{t:"Starboy",p:"The Weeknd",img:"https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=300"},{t:"Random Access",p:"Daft Punk",img:"https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=300"},{t:"After Hours",p:"The Weeknd",img:"https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?w=300"},{t:"Renaissance",p:"Beyoncé",img:"https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=300"},{t:"Midnights",p:"Taylor Swift",img:"https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=300"}],
-            r3:[{t:"Today's Top Hits",p:"50 titres les plus écoutés",img:"https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300"},{t:"RapCaviar",p:"Le meilleur du rap",img:"https://images.unsplash.com/photo-1571330735066-03aaa9429d89?w=300"},{t:"Peaceful Piano",p:"Relaxation & focus",img:"https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=300"},{t:"Beast Mode",p:"Workout intensif",img:"https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=300"},{t:"Indie Pop",p:"Découvertes indie",img:"https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=300"}]
+            r1:[{t:"Daily Mix 1",p:"Daft Punk, Justice...",img:"../../assets/images/media_49.jpg"},{t:"Daily Mix 2",p:"Orelsan, PNL...",img:"../../assets/images/media_50.jpg"},{t:"Discover Weekly",p:"Fait pour toi",img:"../../assets/images/media_51.jpg"},{t:"Focus Flow",p:"Musique pour se concentrer",img:"../../assets/images/media_52.jpg"},{t:"Mood Booster",p:"Feel-good music",img:"../../assets/images/media_53.jpg"}],
+            r2:[{t:"Starboy",p:"The Weeknd",img:"../../assets/images/media_54.jpg"},{t:"Random Access",p:"Daft Punk",img:"../../assets/images/media_55.jpg"},{t:"After Hours",p:"The Weeknd",img:"../../assets/images/media_56.jpg"},{t:"Renaissance",p:"Beyoncé",img:"../../assets/images/media_57.jpg"},{t:"Midnights",p:"Taylor Swift",img:"../../assets/images/media_58.jpg"}],
+            r3:[{t:"Today's Top Hits",p:"50 titres les plus écoutés",img:"../../assets/images/media_49.jpg"},{t:"RapCaviar",p:"Le meilleur du rap",img:"../../assets/images/media_50.jpg"},{t:"Peaceful Piano",p:"Relaxation & focus",img:"../../assets/images/media_59.jpg"},{t:"Beast Mode",p:"Workout intensif",img:"../../assets/images/media_60.jpg"},{t:"Indie Pop",p:"Découvertes indie",img:"../../assets/images/media_61.jpg"}]
         };
         Object.keys(rows).forEach(id => {
             const row = document.getElementById(id);
@@ -165,3 +179,4 @@
     </script>
 </body>
 </html>
+

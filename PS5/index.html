@@ -14,7 +14,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; outline: none; user-select: none; }
 
         body {
-            background: url('van_gogh_starry_night_night_190226_1920x1080.jpg') no-repeat center center fixed;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
             background-color: #000;
             color: #fff;
             font-family: var(--font-main);
@@ -23,7 +23,7 @@
             width: 100vw;
         }
 
-        /* Arrière-plan avec flou et dégradé */
+        /* ArriÃ¨re-plan avec flou et dÃ©gradÃ© */
         .ps5-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -105,7 +105,7 @@
             scroll-behavior: smooth;
             scrollbar-width: none; 
             -ms-overflow-style: none;
-            /* Laisse de la place pour l'ombre de l'élément actif */
+            /* Laisse de la place pour l'ombre de l'Ã©lÃ©ment actif */
         }
         .game-carousel::-webkit-scrollbar { display: none; }
 
@@ -138,7 +138,7 @@
             z-index: 10;
         }
         
-        /* Effet de brillance (glare) sur l'élément actif */
+        /* Effet de brillance (glare) sur l'Ã©lÃ©ment actif */
         .game-item::after {
             content: '';
             position: absolute;
@@ -151,7 +151,7 @@
         }
         .game-item.active::after { opacity: 1; }
 
-        /* En-tête du jeu (Titre + Bouton) */
+        /* En-tÃªte du jeu (Titre + Bouton) */
         .game-header {
             margin-top: 15px;
             max-width: 600px;
@@ -167,7 +167,9 @@
             line-height: 1.2;
             background: linear-gradient(to bottom, #fff 0%, #ccc 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
+            color: transparent;
         }
 
         .game-header p {
@@ -219,7 +221,7 @@
         .play-btn:hover::before { left: 150%; }
         .play-btn:active { transform: scale(0.96); }
 
-        /* Lancement du jeu (Overlay personnalisé) */
+        /* Lancement du jeu (Overlay personnalisÃ©) */
         .launch-overlay {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -434,7 +436,7 @@
         .widget h4 { font-size: 0.95rem; text-transform: uppercase; opacity: 0.7; margin-bottom: 12px; font-weight: 600; letter-spacing: 1px;}
         .widget-content { font-weight: 700; font-size: 1.3rem; display: flex; align-items: center; gap: 12px; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
 
-        /* Guide des contrôles */
+        /* Guide des contrÃ´les */
         .controls-hint {
             position: absolute;
             bottom: 40px;
@@ -473,17 +475,50 @@
             50% { opacity: 0.6; transform: scale(0.98); filter: drop-shadow(0 0 2px white); }
         }
 
+        /* =========================================
+           RESPONSIVE DESIGN (Tablettes & Mobiles)
+           ========================================= */
+        @media (max-width: 1024px) {
+            .interface { padding: 30px 40px; }
+            .widgets-container { left: 40px; bottom: 20px; }
+            .controls-hint { right: 40px; bottom: 20px; }
+        }
+
+        @media (max-width: 768px) {
+            body { background-size: cover; background-position: center; }
+            .interface { padding: 20px; }
+            .top-nav { flex-direction: column; gap: 20px; margin-bottom: 20px; }
+            .menu-tabs { width: 100%; justify-content: center; gap: 30px; }
+            .system-info { width: 100%; justify-content: center; gap: 20px; font-size: 1.1rem; }
+            
+            .game-display { padding-bottom: 80px; }
+            .game-carousel { padding: 15px 0; margin-bottom: 10px; }
+            .game-item { width: 70px; height: 70px; }
+            .game-item.active { width: 120px; height: 120px; transform: translateY(-5px) scale(1.1); }
+            
+            .game-header { text-align: center; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+            .game-header h1 { font-size: 1.8rem; }
+            .game-header p { font-size: 0.85rem; max-width: 100%; }
+            .play-btn { width: 100%; max-width: 200px; padding: 12px 20px; }
+            
+            .widgets-container { display: none; } /* Hide widgets on small screens */
+            .controls-hint { display: none; } /* Hide keyboard controls on mobile */
+            
+            .modal-panel { width: 95vw; height: 90vh; }
+        }
+
     </style>
 </head>
 <body>
 
-    <!-- Overlay de lancement personnalisé -->
+    <!-- Overlay de lancement personnalisÃ© -->
     <div class="launch-overlay" id="launch-overlay">
         <div class="lo-bg" id="lo-bg"></div>
         <div class="lo-gradient"></div>
         <div class="launch-content">
             <div class="launch-icon" id="launch-icon"></div>
             <div class="launch-title" id="launch-title">Chargement...</div>
+            <div class="launch-subtitle" id="launch-subtitle">PrÃ©paration</div>
             <div class="launch-subtitle" id="launch-subtitle">Préparation</div>
             <div class="launch-progress-bar"><div class="launch-progress-fill" id="launch-fill"></div></div>
         </div>
@@ -570,8 +605,7 @@
         <div class="profile-section-title">Progression</div>
         <div class="profile-stat"><span>Niveau</span><span>42</span></div>
         <div class="profile-xp-bar"><div class="profile-xp-fill" style="width:68%"></div></div>
-        <div class="profile-xp-text"><span>6 800 / 10 000 XP</span><span>Niveau 43</span></div>
-
+        
         <!-- Trophées -->
         <div class="profile-section-title">Trophées</div>
         <div class="trophy-row">
@@ -616,7 +650,7 @@
     </div>
 
     <!-- Audio pour le son de navigation -->
-    <audio id="nav-sound" src="https://assets.mixkit.co/active_storage/sfx/1114/1114-preview.mp3" preload="auto"></audio>
+    <audio id="nav-sound" src="assets/images/media_1.mp3" preload="auto"></audio>
 
     <div class="ps5-bg" id="main-bg"></div>
 
@@ -664,8 +698,8 @@
                 {
                     title: "Drive Mad",
                     desc: "Un jeu de conduite fou où tu dois surmonter des obstacles avec divers véhicules.",
-                    icon: "file:///C:/Users/pc/.gemini/antigravity/brain/3e8b06d6-5a50-4331-b7a8-019caed063c1/drive_mad_cover_1776636306474.png",
-                    bg: "file:///C:/Users/pc/.gemini/antigravity/brain/3e8b06d6-5a50-4331-b7a8-019caed063c1/drive_mad_cover_1776636306474.png",
+                    icon: "assets/images/drive_mad_cover.png",
+                    bg: "assets/images/drive_mad_cover.png",
                     actionText: "Jouer",
                     path: "jeux/jeux_dostacle/index.html",
                     loadColor: "#ff6b00"
@@ -673,8 +707,8 @@
                 {
                     title: "Andev Tennis",
                     desc: "Un jeu de tennis classique contre l'ordinateur.",
-                    icon: "file:///C:/Users/pc/.gemini/antigravity/brain/3e8b06d6-5a50-4331-b7a8-019caed063c1/tennis_cover_1776636320282.png",
-                    bg: "file:///C:/Users/pc/.gemini/antigravity/brain/3e8b06d6-5a50-4331-b7a8-019caed063c1/tennis_cover_1776636320282.png",
+                    icon: "assets/images/tennis_cover.png",
+                    bg: "assets/images/tennis_cover.png",
                     actionText: "Jouer",
                     path: "jeux/jeux_de_tenis/index.html",
                     loadColor: "#00d4ff"
@@ -682,8 +716,8 @@
                 {
                     title: "Escape Road",
                     desc: "Échappe à la police dans cette course poursuite infernale en 3D.",
-                    icon: "file:///C:/Users/pc/.gemini/antigravity/brain/3e8b06d6-5a50-4331-b7a8-019caed063c1/escape_road_cover_1776636450222.png",
-                    bg: "file:///C:/Users/pc/.gemini/antigravity/brain/3e8b06d6-5a50-4331-b7a8-019caed063c1/escape_road_cover_1776636450222.png",
+                    icon: "assets/images/escape_road_cover.png",
+                    bg: "assets/images/escape_road_cover.png",
                     actionText: "Jouer",
                     path: "jeux/jeux_de_courepoursute/index.html",
                     loadColor: "#e32636"
@@ -691,8 +725,8 @@
                 {
                     title: "Stick Merge",
                     desc: "Fusionne des armes et tire sur tes ennemis dans ce jeu de tir passionnant.",
-                    icon: "file:///C:/Users/pc/.gemini/antigravity/brain/3e8b06d6-5a50-4331-b7a8-019caed063c1/stick_merge_cover_1776636485276.png",
-                    bg: "file:///C:/Users/pc/.gemini/antigravity/brain/3e8b06d6-5a50-4331-b7a8-019caed063c1/stick_merge_cover_1776636485276.png",
+                    icon: "assets/images/stick_merge_cover.png",
+                    bg: "assets/images/stick_merge_cover.png",
                     actionText: "Jouer",
                     path: "jeux/jeux_de_tire/indexx.html",
                     loadColor: "#39ff14"
@@ -702,8 +736,8 @@
                 {
                     title: "Netflix",
                     desc: "Films, séries et bien plus en illimité.",
-                    icon: "file:///C:/Users/pc/.gemini/antigravity/brain/3e8b06d6-5a50-4331-b7a8-019caed063c1/netflix_cover_1776637800844.png",
-                    bg: "file:///C:/Users/pc/.gemini/antigravity/brain/3e8b06d6-5a50-4331-b7a8-019caed063c1/netflix_cover_1776637800844.png",
+                    icon: "assets/images/netflix_cover.png",
+                    bg: "assets/images/netflix_cover.png",
                     actionText: "Ouvrir",
                     path: "jeux/netflix/index.html",
                     loadColor: "#e50914"
@@ -711,8 +745,8 @@
                 {
                     title: "YouTube",
                     desc: "Regardez vos vidéos et créateurs préférés.",
-                    icon: "file:///C:/Users/pc/.gemini/antigravity/brain/3e8b06d6-5a50-4331-b7a8-019caed063c1/youtube_cover_1776637945372.png",
-                    bg: "file:///C:/Users/pc/.gemini/antigravity/brain/3e8b06d6-5a50-4331-b7a8-019caed063c1/youtube_cover_1776637945372.png",
+                    icon: "assets/images/youtube_cover.png",
+                    bg: "assets/images/youtube_cover.png",
                     actionText: "Ouvrir",
                     path: "jeux/youtube/index.html",
                     loadColor: "#ff0000"
@@ -720,8 +754,8 @@
                 {
                     title: "Disney+",
                     desc: "Le meilleur de Disney, Marvel et Star Wars.",
-                    icon: "https://images.unsplash.com/photo-1534809027769-b00d750a6bac?w=200",
-                    bg: "https://images.unsplash.com/photo-1534809027769-b00d750a6bac?w=1200",
+                    icon: "assets/images/disney_icon.jpg",
+                    bg: "assets/images/media_2.jpg",
                     actionText: "Ouvrir",
                     path: "jeux/disney/index.html",
                     loadColor: "#0063e5"
@@ -729,8 +763,8 @@
                 {
                     title: "Spotify",
                     desc: "Écoutez votre musique pendant que vous jouez.",
-                    icon: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=200",
-                    bg: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200",
+                    icon: "assets/images/spotify_icon.jpg",
+                    bg: "assets/images/media_43.jpg",
                     actionText: "Ouvrir",
                     path: "jeux/spotify/index.html",
                     loadColor: "#1db954"
@@ -738,8 +772,8 @@
                 {
                     title: "Twitch",
                     desc: "Regardez des diffusions en direct de jeux, musique et sports.",
-                    icon: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=200",
-                    bg: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200",
+                    icon: "assets/images/twitch_icon.jpg",
+                    bg: "assets/images/media_69.jpg",
                     actionText: "Ouvrir",
                     path: "jeux/twitch/index.html",
                     loadColor: "#9146ff"
@@ -769,7 +803,7 @@
         let playSound = function() {
             navSound.currentTime = 0;
             navSound.volume = 0.2;
-            navSound.play().catch(e => console.log("L'audio nécessite une interaction préalable."));
+            navSound.play().catch(e => console.log("L'audio nÃ©cessite une interaction prÃ©alable."));
         };
 
         function init() {
@@ -805,7 +839,7 @@
                 item.classList.toggle('active', i === index);
             });
 
-            // Scroller le carrousel pour centrer l'élément actif
+            // Scroller le carrousel pour centrer l'Ã©lÃ©ment actif
             const activeItem = document.getElementById(`item-${index}`);
             if(activeItem) {
                 activeItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
@@ -824,7 +858,7 @@
             img.onload = () => {
                 mainBg.style.backgroundImage = `url('${item.bg}')`;
             };
-            // Fallback s'il y a une erreur réseau
+            // Fallback s'il y a une erreur rÃ©seau
             img.onerror = () => {
                 mainBg.style.backgroundImage = `url('${item.bg}')`;
             }
@@ -833,7 +867,7 @@
             titleText.style.animation = 'none';
             descText.style.animation = 'none';
             playBtn.style.animation = 'none';
-            void titleText.offsetWidth; // Déclenche un reflow
+            void titleText.offsetWidth; // DÃ©clenche un reflow
             
             titleText.style.animation = 'slideIn 0.3s ease-out forwards';
             descText.style.animation = 'slideIn 0.4s ease-out forwards';
@@ -850,32 +884,32 @@
                 widgetsContainer.innerHTML = `
                     <div class="widget">
                         <h4>Amis en ligne</h4>
-                        <div class="widget-content"><span style="color: #00ff00;">●</span> 8 Amis</div>
+                        <div class="widget-content"><span style="color: #00ff00;">â—</span> 8 Amis</div>
                     </div>
                     <div class="widget">
-                        <h4>Trophées</h4>
-                        <div class="widget-content">🏆 415</div>
+                        <h4>TrophÃ©es</h4>
+                        <div class="widget-content">ðŸ† 415</div>
                     </div>
                 `;
             } else {
                 widgetsContainer.innerHTML = `
                     <div class="widget">
-                        <h4>Récemment utilisé</h4>
+                        <h4>RÃ©cemment utilisÃ©</h4>
                         <div class="widget-content">Netflix</div>
                     </div>
                     <div class="widget">
-                        <h4>Stockage Média</h4>
+                        <h4>Stockage MÃ©dia</h4>
                         <div class="widget-content">42 Go libres</div>
                     </div>
                 `;
             }
         }
 
-        // Événement du bouton Jouer/Ouvrir
+        // Ã‰vÃ©nement du bouton Jouer/Ouvrir
         playBtn.addEventListener('click', () => {
             playSound();
             const item = data[currentTab][currentIndex];
-            // Écran de chargement personnalisé
+            // Ã‰cran de chargement personnalisÃ©
             loBg.style.backgroundImage = `url('${item.bg}')`;
             launchIcon.style.backgroundImage = `url('${item.icon}')`;
             launchTitle.textContent = item.title;
@@ -898,7 +932,7 @@
                     gameContainer.style.display = 'block';
                     gameIframe.focus();
                 } else {
-                    alert("Ce média n'est pas encore disponible !");
+                    alert("Ce mÃ©dia n'est pas encore disponible !");
                 }
             }, 2800);
         });
@@ -914,7 +948,7 @@
             if (currentTab === tab) return;
             playSound();
             currentTab = tab;
-            currentIndex = 0; // Réinitialiser l'index
+            currentIndex = 0; // RÃ©initialiser l'index
             
             document.getElementById('tab-jeux').classList.toggle('active', tab === 'jeux');
             document.getElementById('tab-media').classList.toggle('active', tab === 'media');
@@ -955,22 +989,22 @@
         updateClock();
         
 
-        // --- COMPATIBILITÉ MANETTE ---
+        // --- COMPATIBILITÃ‰ MANETTE ---
 
         let gamepadIndex = null;
         let lastInputTime = 0;
-        const inputDelay = 200; // Délai en ms pour éviter un défilement trop rapide
-        const tabDelay = 400; // Délai pour changer d'onglet
+        const inputDelay = 200; // DÃ©lai en ms pour Ã©viter un dÃ©filement trop rapide
+        const tabDelay = 400; // DÃ©lai pour changer d'onglet
         let lastTabTime = 0;
 
-        // Détecter la connexion de la manette
+        // DÃ©tecter la connexion de la manette
         window.addEventListener("gamepadconnected", (e) => {
-            console.log("Manette connectée :", e.gamepad.id);
+            console.log("Manette connectÃ©e :", e.gamepad.id);
             gamepadIndex = e.gamepad.index;
         });
 
         window.addEventListener("gamepaddisconnected", (e) => {
-            console.log("Manette déconnectée");
+            console.log("Manette dÃ©connectÃ©e");
             gamepadIndex = null;
         });
 
@@ -1021,8 +1055,8 @@
 
             // 2. Bouton de validation (Bouton A sur Xbox, Croix sur PS - Index 0)
             if (gamepad.buttons[0].pressed) {
-                playBtn.click(); // Déclenche l'événement du bouton "Jouer"
-                lastInputTime = now + 1000; // Empêche les clics multiples
+                playBtn.click(); // DÃ©clenche l'Ã©vÃ©nement du bouton "Jouer"
+                lastInputTime = now + 1000; // EmpÃªche les clics multiples
             }
         }
 
@@ -1038,7 +1072,7 @@
             selectItem(currentIndex);
         }
 
-        // Lancer la boucle de détection
+        // Lancer la boucle de dÃ©tection
         function updateLoop() {
             handleGamepadInput();
             requestAnimationFrame(updateLoop);
@@ -1048,7 +1082,7 @@
         init();
         updateLoop();
 
-        // --- PANNEAU MODAL (Recherche, Paramètres, Profil) ---
+        // --- PANNEAU MODAL (Recherche, ParamÃ¨tres, Profil) ---
         let soundEnabled = true;
 
         function openPanel(name) {
@@ -1194,7 +1228,7 @@
                 results.appendChild(div);
             });
             if (filtered.length === 0) {
-                results.innerHTML = '<p style="color:rgba(255,255,255,0.3);text-align:center;padding:20px;font-size:0.85rem;">Aucun résultat trouvé</p>';
+                results.innerHTML = '<p style="color:rgba(255,255,255,0.3);text-align:center;padding:20px;font-size:0.85rem;">Aucun rÃ©sultat trouvÃ©</p>';
             }
         }
 
